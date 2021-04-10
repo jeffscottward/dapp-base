@@ -1,18 +1,23 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Flex } from 'theme-ui'
+import SignInArea from './SignInArea'
 
 const Header = () => {
   return (
-    <header role="header">
-      <div className="header-row">
-        <div className="brand">
+    <header role="header" sx={{py: 3}}>
+      <Flex sx={{justifyContent: 'space-between'}}>
+        <div className="col">
           <a href="/">
             <div className="logo">
-              {/* <img src="images/X.png" alt="logo" /> */}
+              Modern DApp Base
             </div>
           </a>
         </div>
-      </div>
+        <div className="col">
+          <SignInArea />
+        </div>
+      </Flex>
     </header>
   )
 }

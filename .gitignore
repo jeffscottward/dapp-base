@@ -54,11 +54,14 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
+# Yarn
 .yarn-integrity
+yarn-error.log
 
 # dotenv environment variables file
 .env
 
 # next.js build output
 .next
+
+.DS_Store

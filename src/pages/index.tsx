@@ -1,57 +1,93 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, Flex, Button, useThemeUI, Styled } from 'theme-ui'
+import { jsx, Styled, Flex } from 'theme-ui'
 import { useStateValue } from '../state/state'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
+import Header from '../components/Header'
+import BottomSpace from '../components/BottomSpace'
 
-const Index = () => {
-  const [stateContainers, dispatch] = useStateValue()
-  const { theme } = useThemeUI()
-  const handleIncrement = (num: number) => {
-    dispatch({ type: 'INCREMENT_COUNTER', payload: num })
+const Home = () => {
+  const [{ dapp }] = useStateValue()
+  const router = useRouter()
+  const [tab, setTab] = useState(router.query.tab)
+  const handleTabClick = (e) => {
+    e.stopPropagation()
+    let selectedTab = e.target.classList[1]
+    setTab(selectedTab)
+    router.push(router.pathname + '?tab=' + selectedTab)
   }
-  const handleDecrement = (num: number) => {
-    dispatch({ type: 'DECREMENT_COUNTER', payload: num })
-  }
-
-  const buttonStyleBase = {
-    fontSize: 3,
-    color: '#FFF',
-    mx: 1,
-  }
-
+  useEffect(() => {
+    if (router.query.tab === undefined) {
+      router.push(router.pathname + '?tab=' + 'tab1')
+    } else {
+      setTab(router.query.tab)
+    }
+  }, [router.query.tab])
   return (
     <Layout>
-      <Button
-        sx={{
-          ...buttonStyleBase,
-          background: theme.colors.primary,
-        }}
-        onClick={() => {
-          handleIncrement(1)
-        }}
-      >
-        +1
-      </Button>
-      <Button
-        sx={{
-          ...buttonStyleBase,
-          background: theme.colors.secondary,
-        }}
-        onClick={() => {
-          handleDecrement(1)
-        }}
-      >
-        -1
-      </Button>
-      {Object.keys(stateContainers).map((stateKey) => (
-        <Flex key={stateKey}>
-          <Styled.pre>
-            {stateKey}: {JSON.stringify(stateContainers[stateKey], null, 2)}
-          </Styled.pre>
-        </Flex>
-      ))}
+      <main>
+        <div className="contents animate">
+          <Header />
+          <BottomSpace />
+          <Flex
+            className="tabs"
+            onClick={handleTabClick}
+            sx={{
+              '*': { cursor: 'pointer', mr: 2, mb: 4 },
+              h3: { flex: 1 },
+              '.tab': {
+                textAlign: 'center',
+                fontWeight: 'bold',
+                pb: ' 1.125rem',
+                mb: 0,
+                '&.active': {
+                  fontWeight: 'bold',
+                  color: 'green',
+                  borderBottom: '0.125rem solid',
+                  borderBottomColor: 'teal',
+                },
+                '&:hover': {
+                  borderBottom: '0.125rem solid',
+                  borderBottomColor: 'black',
+                },
+              },
+            }}
+          >
+            <Styled.h3 className={'tab tab1 ' + (tab === 'tab1' && 'active')}>
+              tab1
+            </Styled.h3>
+            <Styled.h3 className={'tab tab2 ' + (tab === 'tab2' && 'active')}>
+              tab2
+            </Styled.h3>
+          </Flex>
+          <section className="content">
+            <div
+              className="tab-content"
+              sx={{
+                '> *': {
+                  px: '3.5rem',
+                  pt: '5.5rem',
+                },
+              }}
+            >
+              {tab === 'tab1' && (
+                <div className="tab1">
+                  <Styled.h1>Contents of Tab 1</Styled.h1>
+                </div>
+              )}
+              {tab === 'tab2' && (
+                <div className="tab2">
+                  <Styled.h1>Contents of Tab 2</Styled.h1>
+                </div>
+              )}
+            </div>
+          </section>
+        </div>
+      </main>
     </Layout>
   )
 }
 
-export default Index
+export default Home

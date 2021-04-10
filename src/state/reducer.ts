@@ -1,30 +1,33 @@
-type action = {
-  type: string
-  payload: any
-}
+import InitialState from '../state/initialState'
+import type { dappType } from '../state/initialState'
 
-type newState = {
-  [x: string]: any
-}
-
-function appReducer(state: any, action: action) {
-  let newState: newState = {}
+function dappReducer(state = {}, action) {
+  console.log('dappReducer', state, action)
+  let newStateObj: dappType = InitialState.dapp
   switch (action.type) {
-    case 'INCREMENT_COUNTER':
-      newState.counter = state.counter + action.payload
-      return { ...state, ...newState }
-    case 'DECREMENT_COUNTER':
-      newState.counter = state.counter - action.payload
-      return { ...state, ...newState }
+    case 'SET_ADDRESS':
+      newStateObj.address = action.payload
+      return { ...state, ...newStateObj }
+    case 'SET_NETWORK':
+      newStateObj.network = action.payload
+      return { ...state, ...newStateObj }
+    case 'SET_BALANCE':
+      newStateObj.balance = action.payload
+      return { ...state, ...newStateObj }
+    case 'SET_WALLET':
+      newStateObj.wallet = action.payload
+      return { ...state, ...newStateObj }
+    case 'SET_WEB3':
+      newStateObj.web3 = action.payload
+      return { ...state, ...newStateObj }
     default:
       return state
   }
 }
 
-export default function mainReducer(state: any, action: action) {
+export default function mainReducer({ dapp }, action) {
   // middleware goes here, i.e calling analytics service, etc.
-  console.log(action)
   return {
-    app: appReducer(state.app, action),
+    dapp: dappReducer(dapp, action),
   }
 }
