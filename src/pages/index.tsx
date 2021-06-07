@@ -1,6 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx, Styled, Flex } from 'theme-ui'
+/** @jsxImportSource theme-ui **/
+import { Themed, Flex } from 'theme-ui'
 import { useStateValue } from '../state/state'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -17,6 +16,7 @@ const Home = () => {
     let selectedTab = e.target.classList[1]
     setTab(selectedTab)
     router.push(router.pathname + '?tab=' + selectedTab)
+    console.log('e')
   }
   useEffect(() => {
     if (router.query.tab === undefined) {
@@ -55,12 +55,12 @@ const Home = () => {
               },
             }}
           >
-            <Styled.h3 className={'tab tab1 ' + (tab === 'tab1' && 'active')}>
+            <Themed.h3 className={'tab tab1 ' + (tab === 'tab1' && 'active')}>
               tab1
-            </Styled.h3>
-            <Styled.h3 className={'tab tab2 ' + (tab === 'tab2' && 'active')}>
+            </Themed.h3>
+            <Themed.h3 className={'tab tab2 ' + (tab === 'tab2' && 'active')}>
               tab2
-            </Styled.h3>
+            </Themed.h3>
           </Flex>
           <section className="content">
             <div
@@ -74,12 +74,12 @@ const Home = () => {
             >
               {tab === 'tab1' && (
                 <div className="tab1">
-                  <Styled.h1>Contents of Tab 1</Styled.h1>
+                  <Themed.h1>Contents of Tab 1</Themed.h1>
                 </div>
               )}
               {tab === 'tab2' && (
                 <div className="tab2">
-                  <Styled.h1>Contents of Tab 2</Styled.h1>
+                  <Themed.h1>Contents of Tab 2</Themed.h1>
                 </div>
               )}
             </div>

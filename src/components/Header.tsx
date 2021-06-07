@@ -1,6 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+/** @jsxImportSource theme-ui **/
+import {  Flex } from 'theme-ui'
 import SignInArea from './SignInArea'
 
 const Header = () => {

@@ -1,7 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui **/
 import React, { useState } from 'react'
-import { jsx, Flex } from 'theme-ui'
+import {  Flex } from 'theme-ui'
 import { useStateValue } from '../state/state'
 import addrShortener from '../utils/addrShortener'
 import Modal from './Modal'

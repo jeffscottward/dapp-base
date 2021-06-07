@@ -1,5 +1,5 @@
 {
-  "name": "typescript-simply-theme-ui",
+  "name": "dapp-base",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
-    "@theme-ui/components": "^0.3.1",
-    "@theme-ui/css": "^0.3.1",
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "babel-plugin-inline-react-svg": "^2.0.1",
@@ -26,11 +24,13 @@
     "react-html-parser": "^2.0.2",
     "swr": "^0.5.3",
     "recharts": "^1.8.5",
-    "theme-ui": "^0.3.1",
+    "theme-ui": "^0.9.1",
     "ethers": "5.1.0"
   },
   "devDependencies": {
-    "@types/theme-ui": "^0.3.7",
-    "typescript": "^4.0.5"
+    "@svgr/webpack": "^5.5.0",
+    "@types/react": "^17.0.8",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "typescript": "^4.2.4"
   }
 }

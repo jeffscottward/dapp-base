@@ -1,6 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+/** @jsxImportSource theme-ui **/
+import { Themed } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 
@@ -15,7 +14,7 @@ const FallBack = () => {
               className="404message"
               sx={{ height: '100vh', display: 'grid', placeItems: 'center' }}
             >
-              <Styled.h1>404 - could not find route {router.asPath}</Styled.h1>
+              <Themed.h1>404 - could not find route {router.asPath}</Themed.h1>
             </div>
           </section>
         </div>

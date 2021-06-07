@@ -1,5 +1,5 @@
 import ReactHtmlParser from 'react-html-parser'
-export default function (addr: string): string {
+function addrShortener (addr: string): string {
   return ReactHtmlParser(
     addr.substring(0, 6) +
       '&bull;&bull;&bull;' +
@@ -7,3 +7,4 @@ export default function (addr: string): string {
   )
 }
 
+export default addrShortener

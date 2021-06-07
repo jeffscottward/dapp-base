@@ -1,7 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui **/
 import React from 'react'
-import { jsx, Flex, Button, Styled } from 'theme-ui'
+import {  Flex, Button, Themed } from 'theme-ui'
 import Image from 'next/image'
 import Close from '../../public/images/close.svg'
 import onboardInit from '../utils/onboardInit'
@@ -82,7 +81,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
               width={140}
               height={140}
             />
-            <Styled.h1
+            <Themed.h1
               sx={{
                 color: 'white',
                 fontSize: '2.75rem',
@@ -92,8 +91,8 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
               }}
             >
               Connect wallet
-            </Styled.h1>
-            <Styled.h4
+            </Themed.h1>
+            <Themed.h4
               sx={{
                 maxWidth: '80%',
                 color: 'white',
@@ -103,7 +102,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
               }}
             >
               Please connect an ethereum wallet to continue.
-            </Styled.h4>
+            </Themed.h4>
             <Button variant="primaryLarge" onClick={handleConnect}>
               Connect
             </Button>
@@ -130,7 +129,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
               width={140}
               height={140}
             />
-            <Styled.h1
+            <Themed.h1
               sx={{
                 color: 'white',
                 fontSize: '2.75rem',
@@ -140,8 +139,8 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
               }}
             >
               Wallet Connected
-            </Styled.h1>
-            <Styled.h4
+            </Themed.h1>
+            <Themed.h4
               sx={{
                 maxWidth: '80%',
                 color: 'white',
@@ -151,7 +150,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
               }}
             >
               Address: {dapp.address}
-            </Styled.h4>
+            </Themed.h4>
             <Button variant="primaryLarge" onClick={handleDisconnect}>
               Disconnect
             </Button>

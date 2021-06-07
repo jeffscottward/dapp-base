@@ -1,5 +1,4 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui **/
 import { jsx } from 'theme-ui'
 import React from 'react'
 const BottomSpace = () => {
