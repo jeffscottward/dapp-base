@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui **/
 import React, { useState } from 'react'
-import {  Flex } from 'theme-ui'
+import { Flex } from 'theme-ui'
 import { useStateValue } from '../state/state'
 import addrShortener from '../utils/addrShortener'
 import Modal from './Modal'
@@ -29,12 +29,12 @@ const SignInArea = () => {
         <ul>
           {!dapp.address ? (
             <li onClick={handleConnect} className="wallet-addr">
-              <User fill="green"/>
+              <User fill="green" />
               <span>Connect Wallet</span>
             </li>
           ) : (
             <li onClick={handleDisconnect} className="wallet-addr connected">
-              <User fill="green"/>
+              <User fill="green" />
               <span>{dapp.address && addrShortener(dapp.address)}</span>
             </li>
           )}

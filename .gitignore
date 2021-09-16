@@ -64,4 +64,5 @@ yarn-error.log
 # next.js build output
 .next
 
+# mac ds_store
 .DS_Store

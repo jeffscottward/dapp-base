@@ -5,7 +5,8 @@ let onboard = undefined
 const getOnboard = function (subscriptions) {
   if (!onboard) {
     onboard = Onboard({
-      dappId: '834729ff-3ae1-42ec-b770-95de5ff553a0',
+      // dappId not actually needed unless using BlockNative products
+      dappId: '00000000-0000-0000-0000-000000000000', 
       subscriptions,
       hideBranding: true,
       networkId: networkID,

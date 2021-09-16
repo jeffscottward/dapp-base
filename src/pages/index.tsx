@@ -11,12 +11,12 @@ const Home = () => {
   const [{ dapp }] = useStateValue()
   const router = useRouter()
   const [tab, setTab] = useState(router.query.tab)
+
   const handleTabClick = (e) => {
     e.stopPropagation()
     let selectedTab = e.target.classList[1]
     setTab(selectedTab)
     router.push(router.pathname + '?tab=' + selectedTab)
-    console.log('e')
   }
   useEffect(() => {
     if (router.query.tab === undefined) {

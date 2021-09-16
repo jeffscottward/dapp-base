@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui **/
-import {  Flex } from 'theme-ui'
+import { Flex } from 'theme-ui'
 import SignInArea from './SignInArea'
 
 const Header = () => {
   return (
-    <header role="header" sx={{py: 3}}>
-      <Flex sx={{justifyContent: 'space-between'}}>
+    <header role="header" sx={{ py: 3 }}>
+      <Flex sx={{ justifyContent: 'space-between' }}>
         <div className="col">
           <a href="/">
             <div className="logo">

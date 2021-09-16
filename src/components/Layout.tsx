@@ -11,16 +11,19 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const [, dispatch] = useStateValue()
-  const { data: apis, error } = useSWR('/api/apis')
+  const { data: dapps, error } = useSWR('/api/rest')
   // https://github.com/system-ui/theme-ui/issues/834#issuecomment-625865772
+  // TODO: Check if this is still an issue?
   const pageLevelAnimationTiming = timing[6] +'s'
   
   useEffect(() => {
+    // Dummy example dispatch
+    // Add this case to reducer.ts
     dispatch({
-      type: 'SET_AVAILABLE_APIS',
-      payload: apis,
+      type: 'SET_AVAILABLE_DAPPS',
+      payload: dapps,
     })
-  }, [apis])
+  }, [dapps])
 
   return (
     <div className="layout">

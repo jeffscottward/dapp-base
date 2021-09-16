@@ -15,6 +15,5 @@
 - Dead simple useReducer State Managment
 - Prebuilt Modal and Tabs setup
 - 404 Fallback
-- Simple + Scalable themeing (see buttons.ts)
+- Simple + Scalable themeing pattern (see buttons.ts)
 - SVG magic import (use "current" as values for props in SVG file to inherit from React)
-

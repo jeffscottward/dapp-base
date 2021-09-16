@@ -1,33 +1,34 @@
-import InitialState from '../state/initialState'
-import type { dappType } from '../state/initialState'
+import type { StateActionType } from './actions'
+import type { StateType } from './state'
 
-function dappReducer(state = {}, action) {
-  console.log('dappReducer', state, action)
-  let newStateObj: dappType = InitialState.dapp
+export function dappReducer(state: StateType, action: StateActionType): StateType['dapp'] {
+  console.log(state, action)
   switch (action.type) {
     case 'SET_ADDRESS':
-      newStateObj.address = action.payload
-      return { ...state, ...newStateObj }
+      return { ...state.dapp, ...{ address: action.payload } }
     case 'SET_NETWORK':
-      newStateObj.network = action.payload
-      return { ...state, ...newStateObj }
+      return { ...state.dapp, ...{ network: action.payload } }
     case 'SET_BALANCE':
-      newStateObj.balance = action.payload
-      return { ...state, ...newStateObj }
+      return { ...state.dapp, ...{ balance: action.payload } }
     case 'SET_WALLET':
-      newStateObj.wallet = action.payload
-      return { ...state, ...newStateObj }
+      return { ...state.dapp, ...{ wallet: action.payload } }
     case 'SET_WEB3':
-      newStateObj.web3 = action.payload
-      return { ...state, ...newStateObj }
+      return { ...state.dapp, ...{ web3: action.payload } }
+    case 'SET_ENS':
+      return { ...state.dapp, ...{ ens: action.payload } }
     default:
-      return state
+      return state.dapp
   }
 }
 
-export default function mainReducer({ dapp }, action) {
+export default function mainReducer(state: StateType, action: StateActionType): StateType {
   // middleware goes here, i.e calling analytics service, etc.
+  // Service 1
+  // Service 2
+
+  // Finally return map of all stateObjects
+  // stateObject: resulting state of a reducer function after passing in former state and action
   return {
-    dapp: dappReducer(dapp, action),
+    dapp: dappReducer(state, action as StateActionType),
   }
 }

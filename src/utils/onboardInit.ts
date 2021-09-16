@@ -1,5 +1,5 @@
 import getOnboard from './Onboarding'
-import {ethers} from 'ethers'
+import { ethers } from 'ethers'
 declare const window: any;
 
 const onboardInit = (dispatch) => {

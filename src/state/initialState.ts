@@ -1,4 +1,4 @@
-import {networkID} from '../constants'
+import { networkID } from '../constants'
 
 let initialState = {
   dapp: {

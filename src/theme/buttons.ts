@@ -69,7 +69,7 @@ const buttonColorStates = {
 
 Object.keys(buttonColorStates).map((name) => {
   Object.keys(buttonPaddingSizes).map((size) => {
-    buttons[name+(size.charAt(0).toUpperCase() + size.slice(1))] = {
+    buttons[name + (size.charAt(0).toUpperCase() + size.slice(1))] = {
       ...buttonBase,
       ...buttonColorStates[name],
       ...buttonPaddingSizes[size]

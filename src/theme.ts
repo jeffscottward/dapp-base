@@ -1,6 +1,6 @@
 import buttonVariants from './theme/buttons'
 
-export const timing = [.25,.5,.75,1,1.25,1.5,1.75,2,3]
+export const timing = [.25, .5, .75, 1, 1.25, 1.5, 1.75, 2, 3]
 
 const GlobalTheme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
