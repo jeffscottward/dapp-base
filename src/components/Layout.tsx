@@ -14,8 +14,8 @@ const Layout = ({ children }: LayoutProps) => {
   const { data: dapps, error } = useSWR('/api/rest')
   // https://github.com/system-ui/theme-ui/issues/834#issuecomment-625865772
   // TODO: Check if this is still an issue?
-  const pageLevelAnimationTiming = timing[6] +'s'
-  
+  const pageLevelAnimationTiming = timing[6] + 's'
+
   useEffect(() => {
     // Dummy example dispatch
     // Add this case to reducer.ts
@@ -27,12 +27,13 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="layout">
-      {children}      
+      {children}
       <Global
         styles={(theme) => ({
           '*': {
             boxSizing: 'border-box',
             position: 'relative',
+            alignItems: 'center',
             outline: 'none',
             '*::before, *::after': {
               boxSizing: 'border-box',
@@ -57,8 +58,8 @@ const Layout = ({ children }: LayoutProps) => {
           body: {
             minHeight: '100vh',
             scrollBehavior: 'smooth',
-            margin: '0',
-            padding: '0',
+            margin: 0,
+            padding: 0,
             overflowX: 'hidden',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% 100%',
@@ -69,8 +70,8 @@ const Layout = ({ children }: LayoutProps) => {
             zIndex: -1,
             position: 'absolute',
             content: "''",
-            top: '0',
-            left: '0',
+            top: 0,
+            left: 0,
             width: '100vw',
             height: '100vh',
             backgroundAttachment: 'scroll',
@@ -80,41 +81,50 @@ const Layout = ({ children }: LayoutProps) => {
             zIndex: -1,
             position: 'absolute',
             content: "''",
-            top: '0',
-            left: '0',
+            top: 0,
+            left: 0,
             width: '100vw',
             height: '100vh',
             backgroundAttachment: 'scroll',
-          },
-          main: {
-            height: '100vh',
-            overflowY: 'scroll',
-            overflowX: 'hidden',
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
           },
           fieldset: {
             padding: 0,
             border: 'none',
           },
           '.contents': {
-            maxWidth: '76.5rem',
             margin: 'auto',
             width: '100%',
-            height: '100%',
-            paddingLeft: '1rem',
-            paddingRight: '1rem'
+            minHeight: '100vh',
+            height: 'max-content',
+            display: 'flex',
+            flexDirection: 'column',
           },
-          '.contents.animate': {
-            animation: `fadeIn ${pageLevelAnimationTiming}`,
+          main: {
+            flex: 1,
+          },
+          '.content': {
+            width: '100%',
+            maxWidth: '1224px',
+            margin: 'auto',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+          },
+          '.row': {
+            display: 'flex',
+          },
+          '.animate.fadeIn': {
+            animation: `fadeIn 1.75s`,
+          },
+          '.animate.fadeOut': {
+            animation: `fadeOut 1.75s`,
           },
           'ul, ol, li': {
-            margin: '0',
-            padding: '0',
+            margin: 0,
+            padding: 0,
             listStyle: 'none',
           },
-          'a, Button, [type="Button"], [type="reset"], [type="submit"], [type="file"], [type="file"]::-webkit-file-upload-Button': {
+          'a, Button, [type="Button"], [type="reset"], [type="submit"], [type="file"], [type="file"]::-webkit-file-upload-Button':
+          {
             textTransform: 'none',
             appearance: 'none',
             cursor: 'pointer',
@@ -126,8 +136,7 @@ const Layout = ({ children }: LayoutProps) => {
             display: 'inline-block',
           },
           'table, thead, tbody, tfoot, tr, td, th': {
-            borderSpacing: '0',
-            borderCollapse: 'collapse',
+            borderSpacing: 0,
             textAlign: 'left',
           },
           'table tbody tr:nth-of-type(even)': {
