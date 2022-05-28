@@ -6,14 +6,14 @@ const Header = () => {
   return (
     <header role="header" sx={{ py: 3, px: 4 }} className="Header">
       <Flex sx={{ justifyContent: 'space-between' }}>
-        <div className="col">
+        <div>
           <a href="/">
             <div className="logo">
               Modern DApp Base
             </div>
           </a>
         </div>
-        <div className="col">
+        <div>
           <SignInArea />
         </div>
       </Flex>
