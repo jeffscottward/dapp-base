@@ -15,7 +15,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
 
   return (
     <Flex
-      className="overlay"
+      className="Modal overlay"
       sx={{
         position: 'fixed',
         width: '100%',

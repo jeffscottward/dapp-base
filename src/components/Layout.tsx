@@ -1,7 +1,5 @@
 /** @jsxImportSource theme-ui **/
 import { useEffect } from 'react'
-import { Global } from '@emotion/react'
-import GlobalStyles from './GlobalStyles'
 import { useStateValue } from '../state/state'
 import useSWR from 'swr'
 
@@ -24,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <main
-      className="layout"
+      className="Layout"
       sx={{
         margin: 'auto',
         width: '100%',

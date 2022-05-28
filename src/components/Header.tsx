@@ -4,7 +4,7 @@ import SignInArea from './SignInArea'
 
 const Header = () => {
   return (
-    <header role="header" sx={{ py: 3, px: 4 }}>
+    <header role="header" sx={{ py: 3, px: 4 }} className="Header">
       <Flex sx={{ justifyContent: 'space-between' }}>
         <div className="col">
           <a href="/">
