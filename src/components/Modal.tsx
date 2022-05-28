@@ -136,7 +136,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
             >
               Address: {dapp.address}
             </Themed.h4>
-            <Button variant="primaryLarge" onClick={handleDisconnect}>
+            <Button variant="primaryLarge" onClick={()=>{}}>
               Disconnect
             </Button>
           </React.Fragment>
