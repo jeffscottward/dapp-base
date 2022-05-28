@@ -15,18 +15,21 @@ const buttonBase = {
   color: 'text',
 }
 
-const buttonPaddingSizes = {
+const buttonSizes = {
   small: {
-    px: '2rem',
-    py: '0.75rem'
+    px: '1rem',
+    py: '0.5rem',
+    fontSize: 0,
   },
   medium: {
-    px: '3rem',
-    py: '1rem'
+    px: '2rem',
+    py: '.75rem',
+    fontSize: 1,
   },
   large: {
-    px: '4rem',
-    py: '1.25rem'
+    px: '3rem',
+    py: '1rem',
+    fontSize: 2,
   },
 }
 
@@ -35,7 +38,6 @@ const buttonColorStates = {
     bg: 'primary0',
     borderColor: 'primary0',
     color: 'white',
-    boxShadow: '0px 15px 30px rgba(20, 102, 204, 0.16)',
     '&:hover': {
       bg: 'primary00',
       borderColor: 'primary00',
@@ -55,24 +57,28 @@ const buttonColorStates = {
     color: 'secondary0',
     '&:hover': {
       bg: 'secondary00',
+      borderColor: 'secondary00',
+      color: 'white',
     },
     '&:active': {
       bg: 'secondary000',
+      borderColor: 'secondary000',
     },
     '&[disabled]': {
       bg: 'gray0',
       borderColor: 'gray0',
-      cursor: 'not-allowed'
+      cursor: 'not-allowed',
+      color: 'white',
     }
   },
 }
 
 Object.keys(buttonColorStates).map((name) => {
-  Object.keys(buttonPaddingSizes).map((size) => {
+  Object.keys(buttonSizes).map((size) => {
     buttons[name + (size.charAt(0).toUpperCase() + size.slice(1))] = {
       ...buttonBase,
       ...buttonColorStates[name],
-      ...buttonPaddingSizes[size]
+      ...buttonSizes[size]
     }
   })
 })

@@ -1,20 +1,21 @@
 /** @jsxImportSource theme-ui **/
-import { Flex } from 'theme-ui'
-import SignInArea from './SignInArea'
+import { Flex, Themed } from 'theme-ui'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import Link from 'next/link'
 
 const Header = () => {
   return (
-    <header role="header" sx={{ py: 3, px: 4 }} className="Header">
+    <header role="header" sx={{ py: 3, px: 4, bg: 'gray000' }} className="Header">
       <Flex sx={{ justifyContent: 'space-between' }}>
-        <div>
-          <a href="/">
+        <Link href="/">
+          <a sx={{ display: 'flex', flexDirection: 'column', placeContent: 'center' }}>
             <div className="logo">
-              Modern DApp Base
+              <Themed.h3 sx={{ m: 0, color: 'primary00' }}>dApp Base</Themed.h3>
             </div>
           </a>
-        </div>
+        </Link>
         <div>
-          <SignInArea />
+          <ConnectButton />
         </div>
       </Flex>
     </header>

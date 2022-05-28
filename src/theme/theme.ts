@@ -24,11 +24,11 @@ export const theme: Theme = {
     background: '#EEE',
     text: '#666666',
     primary0: 'blue',
-    primary00: 'lightblue',
-    primary000: 'navy',
+    primary00: 'navy',
+    primary000: 'lightblue',
     secondary0: 'green',
-    secondary00: 'lightgreen',
-    secondary000: 'darkgreen',
+    secondary00: 'darkgreen',
+    secondary000: 'lightgreen',
     gray0: 'lightgray',
     gray00: 'darkgray',
     gray000: 'gray',
@@ -108,7 +108,7 @@ export const theme: Theme = {
           appearance: 'none',
           cursor: 'pointer',
         },
-      'a:visited, a:active': {
+      'a, a:visited, a:active': {
         textDecoration: 'none',
       },
       'img, svg, picture, span, a, b, u, i, small, sub, strong, label': {
@@ -126,6 +126,10 @@ export const theme: Theme = {
       },
       '.row': {
         display: 'flex',
+      },
+      '.col': {
+        display: 'flex',
+        flexDirection: 'column',
       },
       '.animate.fadeIn': {
         animation: `fadeIn 1.75s`,

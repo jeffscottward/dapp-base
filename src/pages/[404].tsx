@@ -11,12 +11,7 @@ const FallBack = () => {
     <Layout>
       <Header />
       <Content>
-        <div
-          className="404message"
-          sx={{ height: '100vh', display: 'grid', placeItems: 'center' }}
-        >
-          <Themed.h1>404 - could not find route {router.asPath}</Themed.h1>
-        </div>
+        <Themed.h1>404 - Page {router.asPath} doesn't exist</Themed.h1>
       </Content>
     </Layout>
   )

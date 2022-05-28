@@ -1,9 +1,7 @@
 /** @jsxImportSource theme-ui **/
-type ContentProps = {
+const Content = ({ children }: {
   children?: any
-}
-
-const Content = ({ children }: ContentProps) => {
+}) => {
   return (
     <section
       className="Content"
@@ -11,7 +9,8 @@ const Content = ({ children }: ContentProps) => {
         width: '100%',
         maxWidth: '1400px',
         margin: '0 auto',
-        px: 4,
+        p: 4,
+        pb: 0,
       }}
     > 
       {children}
