@@ -1,5 +1,6 @@
+import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'theme-ui'
-import theme from '../theme'
+import theme from '../theme/theme'
 import { StateProvider } from '../state/state'
 import Head from 'next/head'
 import 'animate.css/animate.css'
@@ -10,12 +11,7 @@ const swrOptions = {
   fetcher: (resource) => fetcherREST(resource),
 }
 
-interface Props<T> {
-  pageProps: React.PropsWithChildren<T>
-  Component: React.FC<T>
-}
-
-function MyApp({ pageProps, Component }: Props<any>) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <StateProvider>
       <ThemeProvider theme={theme}>
@@ -30,4 +26,4 @@ function MyApp({ pageProps, Component }: Props<any>) {
   )
 }
 
-export default MyApp
+export default App

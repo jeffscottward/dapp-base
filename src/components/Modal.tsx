@@ -3,7 +3,6 @@ import React from 'react'
 import { Flex, Button, Themed } from 'theme-ui'
 import Image from 'next/image'
 import Close from '../../public/images/close.svg'
-import onboardInit from '../utils/onboardInit'
 import { useStateValue } from '../state/state'
 
 type ModalProps = {
@@ -13,20 +12,6 @@ type ModalProps = {
 
 const Modal = ({ screen = 'connect', close }: ModalProps) => {
   const [{ dapp }, dispatch] = useStateValue()
-  const onboard: any = onboardInit(dispatch)
-
-  const handleConnect = async () => {
-    let selected = await onboard.walletSelect()
-    if (selected) {
-      await onboard.walletCheck()
-      close()
-    }
-  }
-
-  const handleDisconnect = async () => {
-    onboard.walletReset()
-    close()
-  }
 
   return (
     <Flex
@@ -103,7 +88,7 @@ const Modal = ({ screen = 'connect', close }: ModalProps) => {
             >
               Please connect an ethereum wallet to continue.
             </Themed.h4>
-            <Button variant="primaryLarge" onClick={handleConnect}>
+            <Button variant="primaryLarge" onClick={()=>{}}>
               Connect
             </Button>
           </React.Fragment>

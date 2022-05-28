@@ -1,8 +1,8 @@
-import buttonVariants from './theme/buttons'
+import type { Theme } from 'theme-ui'
 
-export const timing = [.25, .5, .75, 1, 1.25, 1.5, 1.75, 2, 3]
+import buttonVariants from './buttons'
 
-const GlobalTheme = {
+export const theme: Theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   sizes: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
@@ -47,13 +47,92 @@ const GlobalTheme = {
     },
   },
   buttons: {
-    ...buttonVariants
+    ...buttonVariants,
   },
   styles: {
     root: {
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',
+      scrollBehavior: 'smooth',
+      fontSize: '100%',
+      WebkitTextSizeAdjust: '100%',
+      fontVariantLigatures: 'none',
+      WebkitFontVariantLigatures: 'none',
+      textRendering: 'optimizeLegibility',
+      MozOsxFontSmoothing: 'grayscale',
+      fontSmoothing: 'antialiased',
+      WebkitFontSmoothing: 'antialiased',
+      textShadow: 'rgba(0, 0, 0, 0.01) 0 0 0.0625rem',
+      '*, *::before, *::after': {
+        boxSizing: 'border-box',
+        position: 'relative',
+        outline: 'none',
+      },
+      '&::before, &::after': {
+        display: 'none',
+      },
+      body: {
+        minHeight: '100vh',
+        scrollBehavior: 'smooth',
+        margin: 0,
+        padding: 0,
+        overflowX: 'hidden',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '100% 100%',
+        backgroundAttachment: 'scroll',
+        '&::before, &::after': {
+          display: 'none',
+          zIndex: -1,
+          position: 'absolute',
+          content: "''",
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundAttachment: 'scroll',
+        },
+      },
+      fieldset: {
+        padding: 0,
+        border: 'none',
+      },
+      'ul, ol, li': {
+        margin: 0,
+        padding: 0,
+        listStyle: 'none',
+      },
+      'a, Button, [type="Button"], [type="reset"], [type="submit"], [type="file"], [type="file"]::-webkit-file-upload-Button':
+        {
+          textTransform: 'none',
+          appearance: 'none',
+          cursor: 'pointer',
+        },
+      'a:visited, a:active': {
+        textDecoration: 'none',
+      },
+      'img, svg, picture, span, a, b, u, i, small, sub, strong, label': {
+        display: 'inline-block',
+      },
+      'table, thead, tbody, tfoot, tr, td, th': {
+        borderSpacing: 0,
+        textAlign: 'left',
+      },
+      'table tbody tr:nth-of-type(even)': {
+        background: 'rgba(255, 255, 255, 0.04)',
+      },
+      'table tbody tr:hover': {
+        background: 'rgba(255, 255, 255, 0.04)',
+      },
+      '.row': {
+        display: 'flex',
+      },
+      '.animate.fadeIn': {
+        animation: `fadeIn 1.75s`,
+      },
+      '.animate.fadeOut': {
+        animation: `fadeOut 1.75s`,
+      },
     },
     h1: {
       marginTop: '0',
@@ -150,4 +229,4 @@ const GlobalTheme = {
   },
 }
 
-export default GlobalTheme
+export default theme
