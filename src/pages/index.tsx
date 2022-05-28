@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui **/
+import { useEffect, useState } from 'react'
 import { Button, Flex, Themed } from 'theme-ui'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
@@ -7,8 +8,20 @@ import Header from '../components/Header'
 import Content from '../components/Content'
 import { useStateValue } from '../state/state'
 import { useAccount } from 'wagmi'
-import { useEffect, useState } from 'react'
+
 import Modal from '../components/Modal'
+
+// images
+import ArrowImg from '../../public/images/arrow-back.svg'
+import CheckImg from '../../public/images/check-circle.svg'
+import CloseImg from '../../public/images/close.svg'
+import FailImg from '../../public/images/fail.svg'
+import GithubImg from '../../public/images/github.svg'
+import LinkImg from '../../public/images/link.svg'
+import LoadingImg from '../../public/images/loading.svg'
+import MagnifyingImg from '../../public/images/magnifying-glass.svg'
+import OutboundImg from '../../public/images/outbound.svg'
+import UserImg from '../../public/images/user.svg'
 
 const Home = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -77,6 +90,18 @@ const Home = () => {
             <Button variant="secondarySmall" onClick={handleModalOpen}>
               Fire Modal
             </Button>
+          </Flex>
+          <Flex sx={{ alignItems: 'center', '*': { mr: 1}}}>
+            <ArrowImg fill='orange'/>
+            <CheckImg fill='blue'/>
+            <CloseImg fill='black'/>
+            <FailImg fill='red'/>
+            <GithubImg fill='black'/>
+            <LinkImg stroke='gray'/>
+            <LoadingImg fill='black'/>
+            <MagnifyingImg stroke='black'/>
+            <UserImg fill='green'/>
+            <OutboundImg/>
           </Flex>
           <Flex>
             <Button variant="primarySmall">Primary Small</Button>

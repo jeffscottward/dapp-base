@@ -23,15 +23,15 @@ export const theme: Theme = {
   colors: {
     background: '#EEE',
     text: '#666666',
-    primary0: 'blue',
-    primary00: 'navy',
+    primary0: 'navy',
+    primary00: 'blue',
     primary000: 'lightblue',
-    secondary0: 'green',
-    secondary00: 'darkgreen',
+    secondary0: 'darkgreen',
+    secondary00: 'green',
     secondary000: 'lightgreen',
-    gray0: 'lightgray',
-    gray00: 'darkgray',
-    gray000: 'gray',
+    gray0: 'darkgray',
+    gray00: 'gray',
+    gray000: 'lightgray',
   },
   forms: {
     select: {

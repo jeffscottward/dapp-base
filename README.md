@@ -5,16 +5,14 @@
 - Typescript
 - React.js
 - Next.js
-- ThemeUI.js
-- Axios.js
-- Ethers.js
-- Onboard.js
-- SWR.js
+- ThemeUI
+- React Query
+- RainbowKit (WAGMI, Ethers)
 - Recharts.js
 - Animate.css
 - Dead simple useReducer (redux-lite) based state managment
 - 404 Fallback
-- Scalable themeing pattern (see buttons.ts)
+- Scalable themeing pattern (see buttons.ts + index.tsx)
 - SVG magic import (use "current" as values for props in SVG file to inherit from React)
 
 ### Inspiration
@@ -26,10 +24,9 @@ A lot of the complexity of frontend comes with managing patterns. It may be a fi
 ### Needs
 Want to have seperate state objects, not one massive global? Easy! Make a reducer and feed it to a state object.
 
-Want to drop in a whole new theme? Copy paste a ThemeUI json object from a bunch of [resources](https://theme-ui.com/resources/).  
+Want to drop in a whole new theme? 
+Copy paste a ThemeUI json object from a bunch of [resources](https://theme-ui.com/resources/).  
 
-Want to autofetch data onload and keep polling for changes? Already done, see _app.tsx.
-
-Want to login with a web3 wallet? Already done via Onboard.js
+Want to login with a web3 wallet? Already done via Rainbowkit
 
 Enjoy!

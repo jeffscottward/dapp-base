@@ -1,7 +1,5 @@
 /** @jsxImportSource theme-ui **/
-import React from 'react'
 import { Flex, Button, Themed } from 'theme-ui'
-import Image from 'next/image'
 import Close from '../../public/images/close.svg'
 
 const Modal = ({ screen = 'default', close }: { screen?: string; close: () => void }) => {
