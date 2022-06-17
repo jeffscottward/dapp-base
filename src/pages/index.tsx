@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui **/
 // Hooks
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 import { useAccount } from 'wagmi'
 import { useStore } from '../hooks/useStore'
@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 
 // Components
 import Link from 'next/link'
-import { Button, Flex, Themed } from 'theme-ui'
+import { Button, Flex, Input, Select, Themed } from 'theme-ui'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Content from '../components/Content'
@@ -59,15 +59,11 @@ const Home = () => {
     data: queryData,
   } = useQuery<{ subscribers_count }>(['repoData'], async () => {
     return (await fetch('https://api.github.com/repos/tannerlinsley/react-query')).json()
-  })
+  })  
 
   // Logging
-  console.log(
-    { state },
-    { remoteData: { error, isLoading, queryData } },
-    { formErrors },
-  )
-  
+  console.log({ state }, { remoteData: { error, isLoading, queryData } }, { formErrors })
+
   return (
     <Layout>
       <Header />
@@ -131,60 +127,112 @@ const Home = () => {
                 width: '20rem',
                 mb: 2,
                 justifyContent: 'space-between',
-                'input[type="text"], input[type="tel"], select': { flex: 1, maxWidth: '175px', ml: 4 },
+                alignItems: 'center',
+                '& label + *': {
+                  flex: 1,
+                  maxWidth: '175px',
+                  ml: 4,
+                },
               },
             }}
           >
-             <Flex>
+            <Flex>
               <label>Title: </label>
-              <select name="Title" {...register('title', { required: true })}>
+              <Select
+                name="Title"
+                {...register('title', { required: true })}
+                className="selectbox"
+              >
                 <option value="Mr">Mr</option>
                 <option value="Mrs">Mrs</option>
                 <option value="Miss">Miss</option>
                 <option value="Dr">Dr</option>
-              </select>
+              </Select>
             </Flex>
             <Flex>
               <label>First name: </label>
-              <input
+              <Input
                 type="text"
-                {...register('First name', { required: true, maxLength: 80 })}
+                {...register('First name', {
+                  required: { 
+                    value: true,
+                    message: 'Missing First Name'
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z]*$/,
+                    message: 'Alphabetical letters only for names',
+                  },
+                  maxLength: 80,
+                })}
               />
             </Flex>
             <Flex>
               <label>Last name: </label>
-              <input
+              <Input
                 type="text"
-                {...register('Last name', { required: true, maxLength: 100 })}
+                {...register('Last name', {
+                  required: { value: true,
+                    message: 'Missing Last Name'
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z]*$/,
+                    message: 'Alphabetical letters only for names',
+                  },
+                  maxLength: 80,
+                })}
               />
             </Flex>
             <Flex>
               <label>Email: </label>
-              <input
+              <Input
                 type="text"
                 {...register('Email', {
-                  required: true,
-                  pattern:
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  required: { value: true,
+                    message: 'Missing Email'
+                  },
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'Email syntax error',
+                  },
                 })}
               />
             </Flex>
             <Flex>
               <label>Mobile number: </label>
-              <input
+              <Input
                 type="tel"
-                {...register('Mobile number', {
-                  required: true,
-                  maxLength: 11,
-                  minLength: 8,
+                {...register('Telephone', {
+                  required: {
+                    value: true,
+                    message: 'Missing Phone',
+                  },
+                  pattern: {
+                    value:
+                      /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g,
+                    message: 'Telephone syntax error',
+                  },
                 })}
               />
             </Flex>
+            <div className="ErrorBox" sx={{ p: { maxWidth: '250px', color: 'white' } }}>
+              {Object.keys(formErrors).map((error) => {
+                return formErrors[error].type === 'required' ? (
+                  <p key={error + 'msg'} sx={{ background: 'red' }}>
+                    {formErrors[error].message}
+                  </p>
+                ) : formErrors[error].type === 'pattern' ? (
+                  <p key={error + 'msg'} sx={{ background: 'orange' }}>
+                    {formErrors[error].message}
+                  </p>
+                ) : null
+              })}
+            </div>
             <Button type="submit" variant="primarySmall">
               SUBMIT
             </Button>
           </form>
-          <br/>
+          <br />
           <Flex>
             <Button variant="primarySmall">Primary Small</Button>
             <Button variant="primarySmall" disabled>

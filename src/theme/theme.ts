@@ -40,6 +40,7 @@ export const theme: Theme = {
       borderColor: 'text',
       cursor: 'pointer',
       borderRadius: '0.5rem',
+      flex: 1
     },
     input: {
       border: '2px solid transparent',
