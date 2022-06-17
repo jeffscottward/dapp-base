@@ -7,6 +7,7 @@
 - Next.js
 - ThemeUI
 - React Query
+- React Hook Form
 - RainbowKit (WAGMI, Ethers)
 - Recharts.js
 - Animate.css
