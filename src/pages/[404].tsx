@@ -11,7 +11,8 @@ const FallBack = () => {
     <Layout>
       <Header />
       <Content>
-        <Themed.h1>404 - Page {router.asPath} doesn't exist</Themed.h1>
+        <Themed.h1>404 - Page {router.asPath} doesn't exist.</Themed.h1>
+        <Themed.h3>*Did you forget to create the file in the /pages directory?*</Themed.h3>
       </Content>
     </Layout>
   )

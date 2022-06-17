@@ -114,6 +114,9 @@ export const theme: Theme = {
       'img, svg, picture, span, a, b, u, i, small, sub, strong, label': {
         display: 'inline-block',
       },
+      'label[for]':{
+        cursor: 'pointer',
+      },
       'table, thead, tbody, tfoot, tr, td, th': {
         borderSpacing: 0,
         textAlign: 'left',

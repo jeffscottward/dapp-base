@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { useAccount } from 'wagmi'
 import { useStore } from '../hooks/useStore'
+import { useForm } from 'react-hook-form'
 
 // Components
 import Link from 'next/link'
@@ -14,16 +15,18 @@ import Content from '../components/Content'
 import Modal from '../components/Modal'
 
 // UI icons
-import ArrowImg from '../../public/images/arrow-back.svg'
-import CheckImg from '../../public/images/check-circle.svg'
-import CloseImg from '../../public/images/close.svg'
-import FailImg from '../../public/images/fail.svg'
-import GithubImg from '../../public/images/github.svg'
-import LinkImg from '../../public/images/link.svg'
-import LoadingImg from '../../public/images/loading.svg'
-import MagnifyingImg from '../../public/images/magnifying-glass.svg'
-import OutboundImg from '../../public/images/outbound.svg'
-import UserImg from '../../public/images/user.svg'
+import {
+  Arrow,
+  Check,
+  Close,
+  Fail,
+  Github,
+  HyperLink,
+  Loading,
+  Magnifying,
+  Outbound,
+  User,
+} from '../utils/imageIndex'
 
 const Home = () => {
   // Example of getting local component state
@@ -32,8 +35,23 @@ const Home = () => {
   const state = useStore()
   // Example of getting wallet user Data with Rainbowkit via Provider
   const { data: userData } = useAccount()
+  // Example of React Hook Form
+  const {
+    register,
+    formState: { errors: formErrors },
+    handleSubmit,
+  } = useForm()
+
+  // Submit form
+  const onSubmit = (data) => {
+    console.log('RESULT', data)
+    alert(JSON.stringify(data))
+  }
+
   // Modal Toggle
-  const toggleModal = () => modalVisible ? (setModalVisible(false)) : setModalVisible(true)
+  const toggleModal = () =>
+    modalVisible ? setModalVisible(false) : setModalVisible(true)
+
   // React Query example
   const {
     isLoading,
@@ -42,8 +60,14 @@ const Home = () => {
   } = useQuery<{ subscribers_count }>(['repoData'], async () => {
     return (await fetch('https://api.github.com/repos/tannerlinsley/react-query')).json()
   })
-  // Data logging
-  console.log({ localState: state }, { remoteData: { error, isLoading, queryData } })
+
+  // Logging
+  console.log(
+    { state },
+    { remoteData: { error, isLoading, queryData } },
+    { formErrors },
+  )
+  
   return (
     <Layout>
       <Header />
@@ -88,17 +112,79 @@ const Home = () => {
             </Button>
           </Flex>
           <Flex sx={{ alignItems: 'center', '*': { mr: 1 } }}>
-            <ArrowImg fill="orange" />
-            <CheckImg fill="blue" />
-            <CloseImg fill="black" />
-            <FailImg fill="red" />
-            <GithubImg fill="black" />
-            <LinkImg stroke="gray" />
-            <LoadingImg fill="black" />
-            <MagnifyingImg stroke="black" />
-            <UserImg fill="green" />
-            <OutboundImg />
+            <Arrow fill="orange" />
+            <Check fill="blue" />
+            <Close fill="black" />
+            <Fail fill="red" />
+            <Github fill="black" />
+            <HyperLink stroke="gray" />
+            <Loading fill="black" />
+            <Magnifying stroke="black" />
+            <User fill="green" />
+            <Outbound />
           </Flex>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            sx={{
+              my: 2,
+              '> div': {
+                width: '20rem',
+                mb: 2,
+                justifyContent: 'space-between',
+                'input[type="text"], input[type="tel"], select': { flex: 1, maxWidth: '175px', ml: 4 },
+              },
+            }}
+          >
+             <Flex>
+              <label>Title: </label>
+              <select name="Title" {...register('title', { required: true })}>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Dr">Dr</option>
+              </select>
+            </Flex>
+            <Flex>
+              <label>First name: </label>
+              <input
+                type="text"
+                {...register('First name', { required: true, maxLength: 80 })}
+              />
+            </Flex>
+            <Flex>
+              <label>Last name: </label>
+              <input
+                type="text"
+                {...register('Last name', { required: true, maxLength: 100 })}
+              />
+            </Flex>
+            <Flex>
+              <label>Email: </label>
+              <input
+                type="text"
+                {...register('Email', {
+                  required: true,
+                  pattern:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                })}
+              />
+            </Flex>
+            <Flex>
+              <label>Mobile number: </label>
+              <input
+                type="tel"
+                {...register('Mobile number', {
+                  required: true,
+                  maxLength: 11,
+                  minLength: 8,
+                })}
+              />
+            </Flex>
+            <Button type="submit" variant="primarySmall">
+              SUBMIT
+            </Button>
+          </form>
+          <br/>
           <Flex>
             <Button variant="primarySmall">Primary Small</Button>
             <Button variant="primarySmall" disabled>
