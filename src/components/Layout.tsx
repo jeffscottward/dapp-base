@@ -1,7 +1,4 @@
 /** @jsxImportSource theme-ui **/
-import { useEffect } from 'react'
-import { useStateValue } from '../state/state'
-
 const Layout = ({ children }: {
   children?: any
 }) => {

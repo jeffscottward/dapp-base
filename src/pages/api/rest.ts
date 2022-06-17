@@ -4,7 +4,7 @@
 export default function handler(req, res) {
   res.status(200).json([
     {
-      test: 678
+      test: 123
     },
   ])
 }

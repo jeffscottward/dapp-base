@@ -1,17 +1,19 @@
 /** @jsxImportSource theme-ui **/
-import { useEffect, useState } from 'react'
-import { Button, Flex, Themed } from 'theme-ui'
+// Hooks
+import { useState } from 'react'
 import { useQuery } from 'react-query'
+import { useAccount } from 'wagmi'
+import { useStore } from '../hooks/useStore'
+
+// Components
 import Link from 'next/link'
+import { Button, Flex, Themed } from 'theme-ui'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Content from '../components/Content'
-import { useStateValue } from '../state/state'
-import { useAccount } from 'wagmi'
-
 import Modal from '../components/Modal'
 
-// images
+// UI icons
 import ArrowImg from '../../public/images/arrow-back.svg'
 import CheckImg from '../../public/images/check-circle.svg'
 import CloseImg from '../../public/images/close.svg'
@@ -24,42 +26,36 @@ import OutboundImg from '../../public/images/outbound.svg'
 import UserImg from '../../public/images/user.svg'
 
 const Home = () => {
+  // Example of getting local component state
   const [modalVisible, setModalVisible] = useState(false)
-  // Example of getting local global state
-  const [{ dapp }, dispatch] = useStateValue()
-
-  // Example of getting wallet user Data with Rainbowkit
+  // Example of getting global state
+  const state = useStore()
+  // Example of getting wallet user Data with Rainbowkit via Provider
   const { data: userData } = useAccount()
-
-  // Example of auto-executing dispatch to change local global state "test" variable
-  useEffect(() => {
-    dispatch({
-      type: 'SET_TEST_DATA',
-      payload: 456,
-    })
-  }, [])
-
+  // Modal Toggle
+  const toggleModal = () => modalVisible ? (setModalVisible(false)) : setModalVisible(true)
   // React Query example
   const {
     isLoading,
     error,
     data: queryData,
-  } = useQuery<{ subscribers_count }>(['repoData'], () =>
-    fetch('https://api.github.com/repos/tannerlinsley/react-query').then((res) =>
-      res.json(),
-    ),
-  )
-  console.log({ localState: dapp }, { remoteData: { isLoading, error, queryData } })
-
-  const handleModalOpen = () => setModalVisible(true)
-  const handleModalClose = () => setModalVisible(false)
-
+  } = useQuery<{ subscribers_count }>(['repoData'], async () => {
+    return (await fetch('https://api.github.com/repos/tannerlinsley/react-query')).json()
+  })
+  // Data logging
+  console.log({ localState: state }, { remoteData: { error, isLoading, queryData } })
   return (
     <Layout>
       <Header />
-      {modalVisible ? <Modal close={() => handleModalClose()} /> : null}
+      {modalVisible ? <Modal close={() => toggleModal()} /> : null}
       <Content>
         <Themed.h1>Index page</Themed.h1>
+        <Flex>
+          <span sx={{ mr: 3 }}>Count: {state.count}</span>
+          <Button onClick={() => state.increaseCount(1)} variant="primarySmall">
+            Increase++
+          </Button>
+        </Flex>
         {userData ? (
           <span>
             Connected to: <b>{userData.address}</b>
@@ -87,21 +83,21 @@ const Home = () => {
             </Link>
           </Flex>
           <Flex>
-            <Button variant="secondarySmall" onClick={handleModalOpen}>
+            <Button variant="secondarySmall" onClick={toggleModal}>
               Fire Modal
             </Button>
           </Flex>
-          <Flex sx={{ alignItems: 'center', '*': { mr: 1}}}>
-            <ArrowImg fill='orange'/>
-            <CheckImg fill='blue'/>
-            <CloseImg fill='black'/>
-            <FailImg fill='red'/>
-            <GithubImg fill='black'/>
-            <LinkImg stroke='gray'/>
-            <LoadingImg fill='black'/>
-            <MagnifyingImg stroke='black'/>
-            <UserImg fill='green'/>
-            <OutboundImg/>
+          <Flex sx={{ alignItems: 'center', '*': { mr: 1 } }}>
+            <ArrowImg fill="orange" />
+            <CheckImg fill="blue" />
+            <CloseImg fill="black" />
+            <FailImg fill="red" />
+            <GithubImg fill="black" />
+            <LinkImg stroke="gray" />
+            <LoadingImg fill="black" />
+            <MagnifyingImg stroke="black" />
+            <UserImg fill="green" />
+            <OutboundImg />
           </Flex>
           <Flex>
             <Button variant="primarySmall">Primary Small</Button>
