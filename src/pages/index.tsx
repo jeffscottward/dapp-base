@@ -1,10 +1,11 @@
 /** @jsxImportSource theme-ui **/
 // Hooks
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { useAccount } from 'wagmi'
 import { useStore } from '../hooks/useStore'
-import { useForm } from 'react-hook-form'
+import { useForm, Resolver } from 'react-hook-form'
+import { DevTool } from '@hookform/devtools'
 
 // Components
 import Link from 'next/link'
@@ -38,9 +39,10 @@ const Home = () => {
   // Example of React Hook Form
   const {
     register,
+    control,
     formState: { errors: formErrors },
     handleSubmit,
-  } = useForm()
+  } = useForm({ mode: 'onChange' })
 
   // Submit form
   const onSubmit = (data) => {
@@ -59,7 +61,7 @@ const Home = () => {
     data: queryData,
   } = useQuery<{ subscribers_count }>(['repoData'], async () => {
     return (await fetch('https://api.github.com/repos/tannerlinsley/react-query')).json()
-  })  
+  })
 
   // Logging
   console.log({ state }, { remoteData: { error, isLoading, queryData } }, { formErrors })
@@ -154,9 +156,9 @@ const Home = () => {
               <Input
                 type="text"
                 {...register('First name', {
-                  required: { 
+                  required: {
                     value: true,
-                    message: 'Missing First Name'
+                    message: 'Missing First Name',
                   },
                   pattern: {
                     value: /^[a-zA-Z]*$/,
@@ -171,9 +173,7 @@ const Home = () => {
               <Input
                 type="text"
                 {...register('Last name', {
-                  required: { value: true,
-                    message: 'Missing Last Name'
-                  },
+                  required: { value: true, message: 'Missing Last Name' },
                   pattern: {
                     value: /^[a-zA-Z]*$/,
                     message: 'Alphabetical letters only for names',
@@ -187,9 +187,7 @@ const Home = () => {
               <Input
                 type="text"
                 {...register('Email', {
-                  required: { value: true,
-                    message: 'Missing Email'
-                  },
+                  required: { value: true, message: 'Missing Email' },
                   pattern: {
                     value:
                       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -215,9 +213,13 @@ const Home = () => {
                 })}
               />
             </Flex>
+            {/* 
+            * TODO: Implement resolver with types as not to be string matching 
+            * https://react-hook-form.com/ts#Resolver
+            */}
             <div className="ErrorBox" sx={{ p: { maxWidth: '250px', color: 'white' } }}>
-              {Object.keys(formErrors).map((error) => {
-                return formErrors[error].type === 'required' ? (
+              {Object.keys(formErrors).map((error) =>
+                formErrors[error].type === 'required' ? (
                   <p key={error + 'msg'} sx={{ background: 'red' }}>
                     {formErrors[error].message}
                   </p>
@@ -226,12 +228,13 @@ const Home = () => {
                     {formErrors[error].message}
                   </p>
                 ) : null
-              })}
+              )}
             </div>
             <Button type="submit" variant="primarySmall">
               SUBMIT
             </Button>
           </form>
+          <DevTool control={control} />
           <br />
           <Flex>
             <Button variant="primarySmall">Primary Small</Button>

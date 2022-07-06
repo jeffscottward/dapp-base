@@ -1,5 +1,5 @@
 import create from 'zustand'
-// import { mountStoreDevtool } from 'simple-zustand-devtools';
+import { mountStoreDevtool } from 'simple-zustand-devtools'
 
 interface AppState {
   count: number
@@ -13,7 +13,5 @@ export const useStore = create<AppState>()((set) => ({
 
 
 if (process.env.NODE_ENV === 'development' && typeof document !== 'undefined') {
-  // Waiting for this to get fixed
-  // https://github.com/beerose/simple-zustand-devtools/pull/24
-  // mountStoreDevtool('Store', useStore);
+  mountStoreDevtool('Store', useStore);
 }

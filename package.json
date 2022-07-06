@@ -28,6 +28,7 @@
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
+    "@hookform/devtools": "^4.1.1",
     "@svgr/webpack": "^6.2.1",
     "@types/react": "^18.0.9",
     "babel-plugin-inline-react-svg": "^2.0.1",
