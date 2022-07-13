@@ -21,7 +21,7 @@ const wagmiClient = createClient({
   provider,
 })
 
-const RainbowWagmiProvider = ({ children }:{
+const RainbowWagmiProvider: React.FC = ({ children }:{
   children?: any
 }) => {
   return (

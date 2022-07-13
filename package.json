@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
+    "@hookform/resolvers": "^2.9.5",
     "@mdx-js/react": "1",
     "@rainbow-me/rainbowkit": "^0.2.1",
     "animate.css": "^4.1.1",
@@ -25,6 +26,7 @@
     "recharts": "^2.1.10",
     "theme-ui": "^0.14.5",
     "wagmi": "^0.4.3",
+    "yup": "^0.32.11",
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {

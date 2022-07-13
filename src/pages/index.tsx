@@ -4,8 +4,6 @@ import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { useAccount } from 'wagmi'
 import { useStore } from '../hooks/useStore'
-import { useForm, Resolver } from 'react-hook-form'
-import { DevTool } from '@hookform/devtools'
 
 // Components
 import Link from 'next/link'
@@ -14,6 +12,7 @@ import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Content from '../components/Content'
 import Modal from '../components/Modal'
+// import Form from '../components/Form'
 
 // UI icons
 import {
@@ -28,27 +27,16 @@ import {
   Outbound,
   User,
 } from '../utils/imageIndex'
+import Form from '../components/Form'
 
-const Home = () => {
+const Home: React.FC = () => {
   // Example of getting local component state
   const [modalVisible, setModalVisible] = useState(false)
   // Example of getting global state
   const state = useStore()
   // Example of getting wallet user Data with Rainbowkit via Provider
   const { data: userData } = useAccount()
-  // Example of React Hook Form
-  const {
-    register,
-    control,
-    formState: { errors: formErrors },
-    handleSubmit,
-  } = useForm({ mode: 'onChange' })
 
-  // Submit form
-  const onSubmit = (data) => {
-    console.log('RESULT', data)
-    alert(JSON.stringify(data))
-  }
 
   // Modal Toggle
   const toggleModal = () =>
@@ -64,7 +52,7 @@ const Home = () => {
   })
 
   // Logging
-  console.log({ state }, { remoteData: { error, isLoading, queryData } }, { formErrors })
+  console.log({ state }, { remoteData: { error, isLoading, queryData } })
 
   return (
     <Layout>
@@ -121,120 +109,7 @@ const Home = () => {
             <User fill="green" />
             <Outbound />
           </Flex>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{
-              my: 2,
-              '> div': {
-                width: '20rem',
-                mb: 2,
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                '& label + *': {
-                  flex: 1,
-                  maxWidth: '175px',
-                  ml: 4,
-                },
-              },
-            }}
-          >
-            <Flex>
-              <label>Title: </label>
-              <Select
-                name="Title"
-                {...register('title', { required: true })}
-                className="selectbox"
-              >
-                <option value="Mr">Mr</option>
-                <option value="Mrs">Mrs</option>
-                <option value="Miss">Miss</option>
-                <option value="Dr">Dr</option>
-              </Select>
-            </Flex>
-            <Flex>
-              <label>First name: </label>
-              <Input
-                type="text"
-                {...register('First name', {
-                  required: {
-                    value: true,
-                    message: 'Missing First Name',
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z]*$/,
-                    message: 'Alphabetical letters only for names',
-                  },
-                  maxLength: 80,
-                })}
-              />
-            </Flex>
-            <Flex>
-              <label>Last name: </label>
-              <Input
-                type="text"
-                {...register('Last name', {
-                  required: { value: true, message: 'Missing Last Name' },
-                  pattern: {
-                    value: /^[a-zA-Z]*$/,
-                    message: 'Alphabetical letters only for names',
-                  },
-                  maxLength: 80,
-                })}
-              />
-            </Flex>
-            <Flex>
-              <label>Email: </label>
-              <Input
-                type="text"
-                {...register('Email', {
-                  required: { value: true, message: 'Missing Email' },
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: 'Email syntax error',
-                  },
-                })}
-              />
-            </Flex>
-            <Flex>
-              <label>Mobile number: </label>
-              <Input
-                type="tel"
-                {...register('Telephone', {
-                  required: {
-                    value: true,
-                    message: 'Missing Phone',
-                  },
-                  pattern: {
-                    value:
-                      /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g,
-                    message: 'Telephone syntax error',
-                  },
-                })}
-              />
-            </Flex>
-            {/* 
-            * TODO: Implement resolver with types as not to be string matching 
-            * https://react-hook-form.com/ts#Resolver
-            */}
-            <div className="ErrorBox" sx={{ p: { maxWidth: '250px', color: 'white' } }}>
-              {Object.keys(formErrors).map((error) =>
-                formErrors[error].type === 'required' ? (
-                  <p key={error + 'msg'} sx={{ background: 'red' }}>
-                    {formErrors[error].message}
-                  </p>
-                ) : formErrors[error].type === 'pattern' ? (
-                  <p key={error + 'msg'} sx={{ background: 'orange' }}>
-                    {formErrors[error].message}
-                  </p>
-                ) : null
-              )}
-            </div>
-            <Button type="submit" variant="primarySmall">
-              SUBMIT
-            </Button>
-          </form>
-          <DevTool control={control} />
+          <Form/>
           <br />
           <Flex>
             <Button variant="primarySmall">Primary Small</Button>

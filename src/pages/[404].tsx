@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Content from '../components/Content'
 
-const FallBack = () => {
+const FallBack: React.FC = () => {
   const router: NextRouter = useRouter()
   return (
     <Layout>
