@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui **/
-import { Themed } from 'theme-ui'
-
 // Hooks
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'

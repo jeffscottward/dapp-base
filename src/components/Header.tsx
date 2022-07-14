@@ -1,25 +1,22 @@
-/** @jsxImportSource theme-ui **/
-import { Flex, Themed } from 'theme-ui'
+import { s, Flex } from './stitches'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Link from 'next/link'
 
-const Header = () => {
+export default () => {
   return (
-    <header role="header" sx={{ py: 3, px: 4, bg: 'gray000' }} className="Header">
-      <Flex sx={{ justifyContent: 'space-between' }}>
+    <Flex role="header" css={{ py: '$3', px: '$4', bg: '$gray10' }} className="Header">
+      <Flex css={{ fl: 1, jc: 'space-between' }}>
         <Link href="/">
-          <a sx={{ display: 'flex', flexDirection: 'column', placeContent: 'center' }}>
-            <div className="logo">
-              <Themed.h3 sx={{ m: 0, color: 'primary00' }}>dApp Base</Themed.h3>
-            </div>
-          </a>
+          <s.a css={{ d: 'flex', fd: 'column', pc: 'center' }}>
+            <s.div className="logo">
+              <s.h3 css={{ m: 0, color: 'primary00' }}>dApp Base</s.h3>
+            </s.div>
+          </s.a>
         </Link>
-        <div>
+        <s.div>
           <ConnectButton />
-        </div>
+        </s.div>
       </Flex>
-    </header>
+    </Flex>
   )
 }
-
-export default Header

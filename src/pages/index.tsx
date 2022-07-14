@@ -1,4 +1,3 @@
-/** @jsxImportSource theme-ui **/
 // Hooks
 import { useState } from 'react'
 import { useQuery } from 'react-query'
@@ -7,27 +6,14 @@ import { useStore } from '../hooks/useStore'
 
 // Components
 import Link from 'next/link'
-import { Button, Flex, Input, Select, Themed } from 'theme-ui'
+import { s, Flex, Button } from '../components/stitches'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Content from '../components/Content'
-import Modal from '../components/Modal'
-// import Form from '../components/Form'
-
-// UI icons
-import {
-  Arrow,
-  Check,
-  Close,
-  Fail,
-  Github,
-  HyperLink,
-  Loading,
-  Magnifying,
-  Outbound,
-  User,
-} from '../utils/imageIndex'
 import Form from '../components/Form'
+import Modal from '../components/Modal'
+
+import { FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons';
 
 const Home: React.FC = () => {
   // Example of getting local component state
@@ -36,7 +22,6 @@ const Home: React.FC = () => {
   const state = useStore()
   // Example of getting wallet user Data with Rainbowkit via Provider
   const { data: userData } = useAccount()
-
 
   // Modal Toggle
   const toggleModal = () =>
@@ -59,26 +44,26 @@ const Home: React.FC = () => {
       <Header />
       {modalVisible ? <Modal close={() => toggleModal()} /> : null}
       <Content>
-        <Themed.h1>Index page</Themed.h1>
-        <Flex>
-          <span sx={{ mr: 3 }}>Count: {state.count}</span>
-          <Button onClick={() => state.increaseCount(1)} variant="primarySmall">
+        <s.h1>Index page</s.h1>
+        <s.div>
+          <s.b css={{ mr: '$3' }}>Count: {state.count}</s.b>
+          <Button onClick={() => state.increaseCount(1)} color="primary" size="small">
             Increase++
           </Button>
-        </Flex>
+        </s.div>
         {userData ? (
-          <span>
+          <s.span>
             Connected to: <b>{userData.address}</b>
-          </span>
+          </s.span>
         ) : null}
         <div />
         {queryData ? (
-          <span>
+          <s.span>
             subscribers_count: <b>{queryData.subscribers_count}</b>
-          </span>
+          </s.span>
         ) : null}
-        <div
-          sx={{
+        <s.div
+          css={{
             button: {
               m: 2,
               ml: 0,
@@ -87,68 +72,60 @@ const Home: React.FC = () => {
         >
           <Flex>
             <Link href="/contact">
-              <a>
-                <Button variant="secondarySmall">Go to contact page</Button>
-              </a>
+              <s.a css={{ td: 'underline !important'}}>
+                Go to contact page
+              </s.a>
             </Link>
           </Flex>
           <Flex>
-            <Button variant="secondarySmall" onClick={toggleModal}>
+            <Button color="secondary" size="small" onClick={toggleModal}>
               Fire Modal
             </Button>
           </Flex>
-          <Flex sx={{ alignItems: 'center', '*': { mr: 1 } }}>
-            <Arrow fill="orange" />
-            <Check fill="blue" />
-            <Close fill="black" />
-            <Fail fill="red" />
-            <Github fill="black" />
-            <HyperLink stroke="gray" />
-            <Loading fill="black" />
-            <Magnifying stroke="black" />
-            <User fill="green" />
-            <Outbound />
+          <Flex css={{ ai: 'center', '*': { mr: 1 } }}>
+            <FaceIcon/>
+            <ImageIcon/>
+            <SunIcon/>
           </Flex>
           <Form/>
           <br />
           <Flex>
-            <Button variant="primarySmall">Primary Small</Button>
-            <Button variant="primarySmall" disabled>
+            <Button color="primary" size="small">Primary Small</Button>
+            <Button color="primary" size="small" disabled>
               Disabled Primary Small
             </Button>
           </Flex>
           <Flex>
-            <Button variant="primaryMedium">Primary Medium</Button>
-            <Button variant="primaryMedium" disabled>
+            <Button color="primary" size="medium">Primary Medium</Button>
+            <Button color="primary" size="medium" disabled>
               Disabled Primary Medium
             </Button>
           </Flex>
           <Flex>
-            <Button variant="primaryLarge">Primary Large</Button>
-            <Button variant="primaryLarge" disabled>
+            <Button color="primary" size="large">Primary Large</Button>
+            <Button color="primary" size="large" disabled>
               Disabled Primary Large
             </Button>
           </Flex>
-
           <Flex>
-            <Button variant="secondarySmall">Secondary Small</Button>
-            <Button variant="secondarySmall" disabled>
+            <Button color="secondary" size="small">Secondary Small</Button>
+            <Button color="secondary" size="small" disabled>
               Disabled secondary Small
             </Button>
           </Flex>
           <Flex>
-            <Button variant="secondaryMedium">Secondary Medium</Button>
-            <Button variant="secondaryMedium" disabled>
+            <Button color="secondary" size="medium">Secondary Medium</Button>
+            <Button color="secondary" size="medium" disabled>
               Disabled secondary Small
             </Button>
           </Flex>
           <Flex>
-            <Button variant="secondaryLarge">Secondary Large</Button>
-            <Button variant="secondaryLarge" disabled>
+            <Button color="secondary" size="large">Secondary Large</Button>
+            <Button color="secondary" size="large" disabled>
               Disabled secondary Small
             </Button>
           </Flex>
-        </div>
+        </s.div>
       </Content>
     </Layout>
   )

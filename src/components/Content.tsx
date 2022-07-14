@@ -1,20 +1,19 @@
-/** @jsxImportSource theme-ui **/
-const Content = ({ children }: {
+import {s} from './stitches'
+export default ({ children }: {
   children?: any
 }) => {
   return (
-    <section
+    <s.section
       className="Content"
-      sx={{
-        width: '100%',
-        maxWidth: '1400px',
-        margin: '0 auto',
+      css={{
+        w: '100%',
+        maxW: '1400px',
+        m: '0 auto',
         p: 4,
         pb: 0,
       }}
     > 
       {children}
-    </section>
+    </s.section>
   )
 }
-export default Content

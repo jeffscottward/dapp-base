@@ -1801,6 +1801,16 @@
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
+"@radix-ui/colors@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.8.tgz#b08c62536fc462a87632165fb28e9b18f9bd047e"
+  integrity sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==
+
+"@radix-ui/react-icons@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-icons/-/react-icons-1.1.1.tgz#38d2aa548035dd3b799c169bd17177b1cec3152b"
+  integrity sha512-xc3wQC59rsFylVbSusQCrrM+6695ppF730Q6yqzhRdqDcRNWIm2R6ngpzBoSOQMcwnq4p805F+Gr7xo4fmtN1A==
+
 "@rainbow-me/rainbowkit@^0.2.1":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-0.2.5.tgz#507c21395d94a209563c18128c41d697be41dd3f"
@@ -1929,6 +1939,11 @@
   integrity sha512-10cr0s+MtRtqjEw0WFJrm2rwULN30xx7btd/v9cmqME2617/2M5MbHDkFIGIGTa7lwNw4bN9mVGfhlLzrYw8pA==
   dependencies:
     antlr4ts "^0.5.0-alpha.4"
+
+"@stitches/react@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.8.tgz#954f8008be8d9c65c4e58efa0937f32388ce3a38"
+  integrity sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==
 
 "@styled-system/background@^5.1.2":
   version "5.1.2"
@@ -9608,6 +9623,11 @@ statuses@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-2.0.1.tgz#55cb000ccf1d48728bd23c685a063998cf1a1b63"
   integrity sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==
+
+stitches-utils@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/stitches-utils/-/stitches-utils-1.1.0.tgz#601b3fcbfb4c738e81d4d0a7f30d2218ec029d1b"
+  integrity sha512-d4GE/Suz4enI3VRwvcRLuOQZ5BwJa2/5qAtgGgkIe/1Ob8SK0OT1frkWHNmgSc0D9JQR6TMHzcgSz6eem3AIWw==
 
 stream-browserify@^3.0.0:
   version "3.0.0"

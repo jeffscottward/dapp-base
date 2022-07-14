@@ -1,21 +1,17 @@
-/** @jsxImportSource theme-ui **/
-const Layout = ({ children }: {
-  children?: any
-}) => {
+import { s } from './stitches'
+export default ({ children }: { children?: any }) => {
   return (
-    <main
-      className="Layout"
-      sx={{
-        margin: 'auto',
-        width: '100%',
-        minHeight: '100vh',
-        height: 'max-content',
-        display: 'flex',
-        flexDirection: 'column',
+    <s.main
+      css={{
+        m: 'auto',
+        w: '100%',
+        minH: '100vh',
+        h: 'max-content',
+        d: 'flex',
+        fd: 'column',
       }}
     >
       {children}
-    </main>
+    </s.main>
   )
 }
-export default Layout
