@@ -1,7 +1,9 @@
-import { s } from './stitches'
+import { styled } from '../theme/stitches.config'
+const Main = styled('main')
+
 export default ({ children }: { children?: any }) => {
   return (
-    <s.main
+    <Main
       css={{
         m: 'auto',
         w: '100%',
@@ -12,6 +14,6 @@ export default ({ children }: { children?: any }) => {
       }}
     >
       {children}
-    </s.main>
+    </Main>
   )
 }

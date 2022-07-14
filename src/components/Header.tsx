@@ -1,21 +1,21 @@
-import { s, Flex } from './stitches'
+import { s, Flex, Box, Link, Heading } from './stitches'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import Link from 'next/link'
+import NextLink from 'next/link'
 
 export default () => {
   return (
     <Flex role="header" css={{ py: '$3', px: '$4', bg: '$gray10' }} className="Header">
       <Flex css={{ fl: 1, jc: 'space-between' }}>
-        <Link href="/">
-          <s.a css={{ d: 'flex', fd: 'column', pc: 'center' }}>
-            <s.div className="logo">
-              <s.h3 css={{ m: 0, color: 'primary00' }}>dApp Base</s.h3>
-            </s.div>
-          </s.a>
-        </Link>
-        <s.div>
+        <NextLink href="/">
+          <Link css={{ d: 'flex', fd: 'column', pc: 'center' }}>
+            <Box className="logo">
+              <Heading variant={'h4'} css={{ m: 0, color: '$gray1' }}>Dapp Base</Heading>
+            </Box>
+          </Link>
+        </NextLink>
+        <Box>
           <ConnectButton />
-        </s.div>
+        </Box>
       </Flex>
     </Flex>
   )

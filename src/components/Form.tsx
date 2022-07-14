@@ -1,3 +1,5 @@
+import { s, Flex, Button, Box, Text, Input, Heading } from './stitches'
+
 // Hooks
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -48,76 +50,84 @@ const Form = () => {
   }
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <label>Full Name</label>
-          <input
+      <s.form onSubmit={handleSubmit(onSubmit)} css={{ maxW: '300px' }}>
+        <Heading variant={'h6'} css={{ mb: 10, fw: 'bold', mt: 0 }}>
+          React Hook Form Example
+        </Heading>
+        <Box className="form-group">
+          <Text>Full Name</Text>
+          <Input
             type="text"
             {...register('fullname')}
             className={`form-control ${errors.fullname ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.fullname?.message}</div>
-        </div>
-        <div className="form-group">
-          <label>Username</label>
-          <input
+          <Box className="invalid-feedback">{errors.fullname?.message}</Box>
+        </Box>
+        <Box className="form-group">
+          <Text>Username</Text>
+          <Input
             type="text"
             {...register('username')}
             className={`form-control ${errors.username ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.username?.message}</div>
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input
+          <Box className="invalid-feedback">{errors.username?.message}</Box>
+        </Box>
+        <Box className="form-group">
+          <Text>Email</Text>
+          <Input
             type="text"
             {...register('email')}
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.email?.message}</div>
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
+          <Box className="invalid-feedback">{errors.email?.message}</Box>
+        </Box>
+        <Box className="form-group">
+          <Text>Password</Text>
+          <Input
+            type="new-password"
             {...register('password')}
             className={`form-control ${errors.password ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.password?.message}</div>
-        </div>
-        <div className="form-group">
-          <label>Confirm Password</label>
-          <input
-            type="password"
+          <Box className="invalid-feedback">{errors.password?.message}</Box>
+        </Box>
+        <Box className="form-group">
+          <Text>Confirm Password</Text>
+          <Input
+            type="new-password"
             {...register('confirmPassword')}
             className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
-        </div>
-        <div className="form-group form-check">
+          <Box className="invalid-feedback">{errors.confirmPassword?.message}</Box>
+        </Box>
+        <Box className="form-group form-check">
           <input
+            id="acceptTerms"
             type="checkbox"
             {...register('acceptTerms')}
-            className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`}
+            className={`form-check-Input ${errors.acceptTerms ? 'is-invalid' : ''}`}
           />
-          <label htmlFor="acceptTerms" className="form-check-label">
+          <label htmlFor="acceptTerms" className="form-check-Text">
             I have read and agree to the Terms
           </label>
-          <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
-        </div>
-        <div className="form-group">
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
-          <button
-            type="button"
-            onClick={() => reset()}
-            className="btn btn-warning float-right"
-          >
-            Reset
-          </button>
-        </div>
-      </form>
+          <Box className="invalid-feedback">{errors.acceptTerms?.message}</Box>
+        </Box>
+        <Box className="form-group">
+          <Flex css={{ jc: 'flex-end', mt: '$2' }}>
+            <Button
+              css={{ mr: '$2' }}
+              type="button"
+              onClick={() => reset()}
+              color="secondary"
+              size="small"
+            >
+              Reset
+            </Button>
+            <Button type="submit" color="primary" size="small">
+              Register
+            </Button>
+          </Flex>
+        </Box>
+      </s.form>
       <DevTool control={control} />
     </>
   )

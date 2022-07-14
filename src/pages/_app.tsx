@@ -1,15 +1,15 @@
 import type { AppProps } from 'next/app'
-// import { ThemeProvider } from 'theme-ui'
-// import theme from '../theme/theme'
-import 'animate.css/animate.css'
 import Head from 'next/head'
-import RainbowWagmiProvider from '../components/RainbowWagmiProvider'
+import RainbowWagmiProvider from '../components/RainbowWagmi'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { reset, globalStyles } from '../theme/stitches.config'
+import 'animate.css/animate.css'
+
 const queryClient = new QueryClient()
 
 function App({ Component, pageProps }: AppProps) {
+  // Styles reset & global
   reset()
   globalStyles()
   return (

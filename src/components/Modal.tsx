@@ -1,10 +1,9 @@
-import { s, Flex } from './stitches'
+import { s, Flex, Button, Box, Heading } from './stitches'
 import { Cross1Icon } from '@radix-ui/react-icons'
-import { Button } from './stitches';
 
 const Modal = ({ screen = 'default', close }: { screen?: string; close: () => void }) => {
   return (
-    <s.div
+    <Box
       className="Modal"
       css={{
         pos: 'fixed',
@@ -49,7 +48,7 @@ const Modal = ({ screen = 'default', close }: { screen?: string; close: () => vo
         >
           {screen === 'default' && (
             <>
-              <s.div
+              <Box
                 onClick={close}
                 css={{
                   pos: 'absolute',
@@ -63,8 +62,8 @@ const Modal = ({ screen = 'default', close }: { screen?: string; close: () => vo
                 }}
               >
                 <Cross1Icon />
-              </s.div>
-              <s.h1
+              </Box>
+              <Heading variant="h3"
                 css={{
                   color: 'white',
                   fs: '2.75rem',
@@ -74,8 +73,8 @@ const Modal = ({ screen = 'default', close }: { screen?: string; close: () => vo
                 }}
               >
                 Default Modal
-              </s.h1>
-              <s.h4
+              </Heading>
+              <Heading variant="h4"
                 css={{
                   maxW: '80%',
                   color: 'white',
@@ -85,13 +84,15 @@ const Modal = ({ screen = 'default', close }: { screen?: string; close: () => vo
                 }}
               >
                 Add content below
-              </s.h4>
-              <Button color="primary" size="medium" onClick={() => {}}>Do Something</Button>
+              </Heading>
+              <Button color="primary" size="medium" onClick={() => {}}>
+                Do Something
+              </Button>
             </>
           )}
         </Flex>
       </Flex>
-    </s.div>
+    </Box>
   )
 }
 

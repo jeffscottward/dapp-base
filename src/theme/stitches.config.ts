@@ -1,6 +1,5 @@
 import { createStitches } from '@stitches/react'
 import type * as Stitches from '@stitches/react'
-import * as utils from 'stitches-utils'
 import colorPalette from './colors'
 
 export const {
@@ -121,7 +120,7 @@ export const {
       margin: value,
     }),
     mt: (value: Stitches.PropertyValue<'marginTop'>) => ({
-      mt: value,
+      marginTop: value,
     }),
     mr: (value: Stitches.PropertyValue<'marginRight'>) => ({
       marginRight: value,
@@ -137,7 +136,7 @@ export const {
       marginRight: value,
     }),
     my: (value: Stitches.PropertyValue<'marginTop' | 'marginBottom'>) => ({
-      mt: value,
+      marginTop: value,
       marginBottom: value,
     }),
     w: (value: Stitches.PropertyValue<'width'>) => ({
@@ -166,6 +165,9 @@ export const {
     }),
     fd: (value: Stitches.PropertyValue<'flexDirection'>) => ({
       flexDirection: value,
+    }),
+    flw: (value: Stitches.PropertyValue<'flexWrap'>) => ({
+      flexWrap: value,
     }),
     jc: (value: Stitches.PropertyValue<'justifyContent'>) => ({
       justifyContent: value,
@@ -229,6 +231,7 @@ export const globalStyles = globalCss({
     ff: 'sans-serif',
     fs: '100%',
     lh: '1',
+    ts: 'rgba(0, 0, 0, 0.01) 0 0 0.0625rem',
     scrollBehavior: 'smooth',
     WebkitTextSizeAdjust: '100%',
     fontVariantLigatures: 'none',
@@ -237,9 +240,7 @@ export const globalStyles = globalCss({
     MozOsxFontSmoothing: 'grayscale',
     fontSmoothing: 'antialiased',
     WebkitFontSmoothing: 'antialiased',
-    ts: 'rgba(0, 0, 0, 0.01) 0 0 0.0625rem',
   },
-
   '*, *::before, *::after': {
     boxSizing: 'border-box',
     pos: 'relative',
@@ -272,34 +273,34 @@ export const globalStyles = globalCss({
     },
   },
   h1: {
-    mt: '0',
+    mt: 0,
     fs: '$6',
   },
   h2: {
-    mt: '0',
+    mt: 0,
     fs: '$5',
   },
   h3: {
-    mt: '0',
+    mt: 0,
     fs: '$4',
   },
   h4: {
-    mt: '0',
+    mt: 0,
     fs: '$3',
   },
   h5: {
-    mt: '0',
+    mt: 0,
     fs: '$2',
   },
   h6: {
-    mt: '0',
+    mt: 0,
     fs: '$1',
   },
   p: {
-    mt: '0',
+    mt: 0,
   },
   a: {
-    color: 'primary',
+    color: '$text',
     td: 'none',
   },
   pre: {
