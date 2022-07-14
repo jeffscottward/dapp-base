@@ -5,7 +5,7 @@
 - Typescript
 - React.js
 - Next.js
-- ThemeUI
+- Stitches (SystemUI)
 - React Query
 - React Hook Form
 - RainbowKit (WAGMI, Ethers)
