@@ -11,7 +11,7 @@
 - RainbowKit (WAGMI, Ethers)
 - Recharts.js
 - Animate.css
-- Dead simple global state w/ Zustand useState hook
+- Dead simple global state w/ Zustand hook
 - 404 Fallback
 - Scalable themeing pattern (see buttons.ts + index.tsx)
 - SVG magic import (use "current" as values for props in SVG file to inherit from React)
