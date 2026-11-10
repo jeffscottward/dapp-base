@@ -66,3 +66,6 @@ yarn-error.log
 
 # mac ds_store
 .DS_Store
+
+# TypeScript incremental build info
+*.tsbuildinfo
