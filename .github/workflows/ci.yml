@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # TypeScript 7's bin/tsc needs Node 20+ (extensionless ESM bin).
+          node-version: 22
+          cache: yarn
+      # hardhat@2.9.9 declares engines.node ^12 || ^14 || ^16; nothing in this repo runs hardhat.
+      - run: yarn install --frozen-lockfile --ignore-engines
+      - name: Typecheck (TypeScript 7)
+        run: yarn typecheck
+      - name: Build (Next.js 12, type check with the TypeScript 6 API)
+        run: yarn build
